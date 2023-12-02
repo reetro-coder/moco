@@ -54,4 +54,10 @@ const PERKS = {
   }
 }
 
-export { DIMS, PERKS };
+const DEVICES = [
+  'SELECT DEVICE',
+  'ANDROID',
+  'IOS',
+]
+
+export { DIMS, PERKS, DEVICES };

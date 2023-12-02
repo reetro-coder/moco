@@ -1,6 +1,6 @@
 import { DIMS } from "../constants";
 import LOGO from "../assets/logo.png";
-
+import $ from "jquery";
 export default function Header() {
   return (
     <header className="header">
@@ -24,7 +24,7 @@ export default function Header() {
         </a>
       </div>
       <div className="header__wrapper">
-        <a href="#beta_info" className="header__a nowrap">
+        <a href="#beta-info" className="header__a nowrap">
           BETA INFO
         </a>
       </div>

@@ -30,9 +30,18 @@ function fadeCardsAnimationEnd(element) {
   $(element).removeClass("fade-cards-animation");
 }
 
+function mouseHandler(color, elements) {
+  for (let element of elements) {
+    $(element + ':any-link').css({
+      color: color,
+    });
+  }
+}
+
 export {
   buttonClickAnimation,
   buttonClickAnimationEnd,
   fadeCardsAnimation,
   fadeCardsAnimationEnd,
+  mouseHandler,
 };

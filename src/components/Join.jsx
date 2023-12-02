@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import {
   buttonClickAnimation,
@@ -7,9 +7,16 @@ import {
   fadeCardsAnimationEnd,
 } from "../Utils";
 import { PERKS } from "../constants";
-import { contains } from "jquery";
 
 export default function Join() {
+  const [perk, setPerk] = useState(1);
+  const [perkBG, setPerkBG] = useState(PERKS[1].bg);
+  const [perk1, setPerk1] = useState(PERKS[1].values[0]);
+  const [perk2, setPerk2] = useState(PERKS[1].values[1]);
+  const [perk3, setPerk3] = useState(PERKS[1].values[2]);
+  const [perk4, setPerk4] = useState(PERKS[1].values[3]);
+  const [perksTimeout, setPerksTimeout] = useState(null);
+
   function perkHeight() {
     return `${Math.random() + 5}rem`;
   }
@@ -36,22 +43,20 @@ export default function Join() {
       ".join__cards__container__perk3",
       ".join__cards__container__perk4",
     ]);
-    const setPerksTimeout = setTimeout(() => {
-      // todo
+    if (perksTimeout) clearTimeout(perksTimeout);
+    const timeoutId = setTimeout(() => {
       setPerkBG(PERKS[updated].bg);
       setPerk1(PERKS[updated].values[0]);
       setPerk2(PERKS[updated].values[1]);
       setPerk3(PERKS[updated].values[2]);
       setPerk4(PERKS[updated].values[3]);
     }, 650);
+    setPerksTimeout(timeoutId);
   }
 
-  const [perk, setPerk] = useState(1);
-  const [perkBG, setPerkBG] = useState(PERKS[1].bg);
-  const [perk1, setPerk1] = useState(PERKS[1].values[0]);
-  const [perk2, setPerk2] = useState(PERKS[1].values[1]);
-  const [perk3, setPerk3] = useState(PERKS[1].values[2]);
-  const [perk4, setPerk4] = useState(PERKS[1].values[3]);
+  useEffect(() => {
+    if (perksTimeout) clearTimeout(perksTimeout);
+  }, []);
 
   return (
     <section id="join" className="join">
@@ -180,7 +185,15 @@ export default function Join() {
           Except, this unknown is full of monsters, dungeons... and things that
           can slay you almost instantly, but in a fun way! 😬
         </p>
-        <button className="nowrap">SIGN UP</button>
+        <button
+          className="join__why__button nowrap"
+          onClick={() => {
+            buttonClickAnimation([".join__why__button"]);
+          }}
+          onAnimationEnd={() => buttonClickAnimationEnd([".join__why__button"])}
+        >
+          SIGN UP
+        </button>
       </div>
     </section>
   );
