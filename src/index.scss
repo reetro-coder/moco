@@ -805,7 +805,6 @@ section {
   transition: rotate var(--FADEOUT-DURATION);
 }
 
-.beta-info__input-wrapper:first-child:hover,
 .beta-info__input-wrapper:first-child:hover {
   &::after {
     background-image: url(assets/email-hover.png);
