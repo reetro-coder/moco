@@ -462,7 +462,7 @@ section {
 
 .parallax__jax {
   --PARALLAX-SPEED: 17.5;
-  object-position: min(0px, calc(-930px + 70vw)) center;
+  // object-position: min(0px, calc(-930px + 70vw)) center;
 }
 
 .parallax__filter {
